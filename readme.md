@@ -13,14 +13,20 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     protected $middleware = [
+        ...
+        ...
         \Axterisko\ProfileJsonResponse\Middleware\ProfileJsonResponse::class
     ];
 }
 ```
 
-Set `profile` param in request for getting debug info in json response
 
-For limitation profiling data output, set `$profilingData` property keys
+For limitation profiling data output, create in `config\app.php` the key `profile-json-response-data` ans set property keys
 ```
-protected $profilingData = ['queries'];
+...
+
+'profile-json-response-data' = ['queries'],
+
+...
+
 ```

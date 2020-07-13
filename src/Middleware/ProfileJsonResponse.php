@@ -54,7 +54,7 @@ class ProfileJsonResponse
             return $response;
         }
 
-        if ($response instanceof JsonResponse && $request->has('profile')) {
+        if ($response instanceof JsonResponse) {
             $data = $response->getData();
             if (is_array($data)) {
                 $response->setData(array_merge($data, [
@@ -76,6 +76,9 @@ class ProfileJsonResponse
      */
     protected function getProfilingData()
     {
+
+        $this->profilingData = config('profile-json-response-data',[]);
+
         if (empty($this->profilingData)) {
             return app('debugbar')->getData();
         }
