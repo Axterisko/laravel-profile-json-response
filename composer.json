@@ -1,11 +1,11 @@
 {
     "name": "axterisko/laravel-profile-json-response",
-    "description": ":package_description",
+    "description": "Profiling JSON responses in Laravel",
     "license": "MIT",
     "authors": [
         {
             "name": "Alex Pettiti",
-            "email": "alex.pettiti@axterisko.it",
+            "email": "alex.pettiti@axterisko.it"
         }
     ],
     "homepage": "https://github.com/axterisko/laravel-profile-json-response",
