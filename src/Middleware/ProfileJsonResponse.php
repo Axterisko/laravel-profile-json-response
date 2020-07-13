@@ -61,7 +61,7 @@ class ProfileJsonResponse
                     '_debugbar' => $this->getProfilingData()
                 ]));
             } else {
-                $data->_debugBar = $this->getProfilingData();
+                $data->_debugbar = $this->getProfilingData();
                 $response->setData($data);
             }
         }
