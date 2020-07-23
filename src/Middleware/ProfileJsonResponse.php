@@ -77,7 +77,7 @@ class ProfileJsonResponse
     protected function getProfilingData()
     {
 
-        $this->profilingData = config('profile-json-response-data',[]);
+        $this->profilingData = config('app.profile-json-response-data',[]);
 
         if (empty($this->profilingData)) {
             return app('debugbar')->getData();
