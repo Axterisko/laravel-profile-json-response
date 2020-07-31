@@ -4,6 +4,7 @@
 namespace Axterisko\ProfileJsonResponse\Middleware;
 
 
+use Axterisko\ProfileJsonResponse\ProfilingData;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -76,13 +77,18 @@ class ProfileJsonResponse
      */
     protected function getProfilingData()
     {
+        $this->profilingData = config('app.profile-json-response-data', []);
+        $data = app('debugbar')->getData();
 
-        $this->profilingData = config('app.profile-json-response-data',[]);
+        if (empty($this->profilingData))
+            return $data;
 
-        if (empty($this->profilingData)) {
-            return app('debugbar')->getData();
+        if (is_array($this->profilingData))
+            return Arr::only($data, $this->profilingData);
+        else if (is_a($this->profilingData, ProfilingData::class, true)) {
+            return (new $this->profilingData($data))->getData();
         }
 
-        return  Arr::only(app('debugbar')->getData(), $this->profilingData);
+        return $data;
     }
 }
