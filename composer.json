@@ -11,7 +11,7 @@
     "homepage": "https://github.com/axterisko/laravel-profile-json-response",
     "keywords": ["Laravel", "Profile","ProfileJsonResponse"],
     "require": {
-        "illuminate/support": "~5|~6|~7"
+        "illuminate/support": "~5|~6|~7|~8"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
