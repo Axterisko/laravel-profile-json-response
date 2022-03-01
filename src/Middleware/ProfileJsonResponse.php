@@ -4,7 +4,6 @@
 namespace Axterisko\ProfileJsonResponse\Middleware;
 
 
-use Axterisko\ProfileJsonResponse\ProfilingData;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -85,9 +84,8 @@ class ProfileJsonResponse
 
         if (is_array($this->profilingData))
             return Arr::only($data, $this->profilingData);
-        else if (is_a($this->profilingData, ProfilingData::class, true)) {
-            return (new $this->profilingData($data))->getData();
-        }
+        else if (is_callable($this->profilingData))
+            return call_user_func($this->profilingData, $data);
 
         return $data;
     }
